@@ -227,13 +227,29 @@ docker run -it --rm \
 ## Build Docker-Image
 
 ```
-docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 --build-arg N8N_VERSION=<VERSION> -t n8nio/n8n:<VERSION> .
+# Subir a versão do n8n para o servidor de npm (npm.angular-ecommerce.com)
+## Pré-reqs:
+- isso para configurar o npm local e criar usuário no npm da angular (verdaccio)
+npm config set @angularecommerce:registry http://npm.angular-ecommerce.com
+npm config set always-auth true
+npm adduser --registry http://npm.angular-ecommerce.com --scope=@angularecommerce
+npm login
 
-# For example:
-docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 --build-arg N8N_VERSION=0.114.0 -t n8nio/n8n:0.114.0 .
+# alterar o package.json
+git add .
+git commit -m "0.126.102"
+git push origin master
+git tag -a 0.126.102 -m "Release 0.126.102"
+git push origin 0.126.102
+npm publish
 
-# Or:
-docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 --build-arg N8N_VERSION=0.126.a -t areichert/n8n:0.126.a .
+- no packages.json, incluir isso:
+
+- no Dockerfile, alterar o lugar de onde ele vai baixar o n8n via npm install
+
+
+# Criar a imagem do docker
+docker buildx build --platform linux/amd64 --build-arg N8N_VERSION=0.126.100 -t areichert/n8n:0.126.100 .
 ```
 
 

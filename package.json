@@ -1,8 +1,8 @@
 {
-  "name": "n8n",
-  "version": "0.126.100",
-  "private": true,
-  "homepage": "https://n8n.io",
+  "name": "n8n-angulare",
+  "version": "0.126.102",
+  "private": false,
+  "homepage": "https://angulare.app",
   "scripts": {
     "bootstrap": "lerna bootstrap --hoist --no-ci",
     "build": "lerna exec npm run build",
@@ -19,9 +19,27 @@
     "worker": "./packages/cli/bin/n8n worker"
   },
   "devDependencies": {
+    "jest": "^27.0.6",
     "lerna": "^3.13.1",
     "rimraf": "^3.0.2",
-    "run-script-os": "^1.0.7"
+    "run-script-os": "^1.0.7",
+    "typescript": "^4.3.5"
   },
-  "postcss": {}
+  "postcss": {},
+  "description": "![n8n.io - Workflow Automation](https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reichert/n8n.git"
+  },
+  "author": "Alessandro Reichert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reichert/n8n/issues"
+  },
+  "dependencies": {
+    "firebase": "8.8.1",
+    "firebase-auth": "0.1.2",
+    "jsonwebtoken": "8.5.1"
+  }
 }
